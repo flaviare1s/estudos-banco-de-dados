@@ -9,7 +9,7 @@ CREATE TABLE produto (
  categoria VARCHAR(30) NOT NULL,
  nome VARCHAR(50) NOT NULL,
  imagem VARCHAR(300),
- preço DECIMAL(10,2) NOT NULL,
+ preco DECIMAL(10,2) NOT NULL,
  desconto DECIMAL,
  estoque INT
 ) DEFAULT CHARSET = utf8;
@@ -125,7 +125,7 @@ INSERT INTO cor (nome) VALUES
 ('Amarelo'),
 ('Beje');
 
-INSERT INTO produto (categoria, nome, preço, desconto, estoque, marca_id, tamanho_id, genero_id, cor_id)
+INSERT INTO produto (categoria, nome, preco, desconto, estoque, marca_id, tamanho_id, genero_id, cor_id)
 VALUES
 ('Tênis', 'Air Max', 250, 30, 10, 1, 8, 1, 1),
 ('Tênis', 'Ultraboost', 120, NULL, 10, 2, 7, 1, 2),
@@ -173,7 +173,7 @@ VALUES
 ('José Maria do Nasciemnto', '555.459.702-70', 'zemaria@yahoo.com', '(21)98468-5689', 'Avenida América', '106', 'Centro', 'Rio de Janeiro', '60.560-185', 'Casa'),
 ('Milena Rodrigues da Silva', '900.307.089-42', 'milena@gmail.com', '(85)99734-9210', 'Rua Principal', '106', 'Praia do Futuro', 'Fortaleza', '60.490-803', 'Perto da Barraca do João');
 
-SELECT id, estoque, preço
+SELECT id, estoque, preco
 FROM produto
 WHERE marca_id = (SELECT id FROM marca WHERE nome = 'Nike')
 AND estoque > 0;
