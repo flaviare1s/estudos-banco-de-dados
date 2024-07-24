@@ -194,6 +194,9 @@ SELECT *
 FROM vendedor
 WHERE dataNascimento < "2000-01-01";
 
+-- Operador LIKE:
+-- % indica o que está faltando no texto
+
 SELECT *
 FROM vendedor
 WHERE nome LIKE "j%"; -- exibe os vendedores cujos nomes começam com J
@@ -202,4 +205,59 @@ SELECT *
 FROM vendedor
 WHERE sobrenome LIKE "%va";
 
--- % indica o que está faltando no texto
+SELECT *
+FROM vendedor
+WHERE nome LIKE "l%a"; -- nome começa com L e termina com A
+
+SELECT *
+FROM produto
+WHERE descricao LIKE "%livro%";
+
+SELECT *
+FROM produto
+WHERE descricao LIKE "%masculino%";
+
+-- Ordenação:
+SELECT *
+FROM produto
+ORDER BY preco; -- Padrão: ASC = crescente
+
+SELECT *
+FROM produto
+ORDER BY preco DESC; -- DESC = ordem decrescente
+
+SELECT nome, preco, estoque
+FROM produto
+WHERE estoque BETWEEN 50 AND 200
+ORDER BY estoque;
+
+UPDATE vendedor
+SET nome = "Maria"
+WHERE idVendedor = 8;
+
+SELECT idVendedor, nome, sobrenome
+FROM vendedor
+ORDER BY nome, sobrenome; -- caso o nome seja igual, utiliza o sobrenome para ordernar
+
+SELECT *
+FROM produto
+LIMIT 3; -- limita a quantidade de dados exibida
+
+SELECT *
+FROM produto
+LIMIT 3 OFFSET 3; -- limita a quantidade de dados exibida a partir de 3
+
+SELECT *
+FROM produto
+LIMIT 3 OFFSET 6;
+
+SELECT *
+FROM produto
+LIMIT 3 OFFSET 9;
+
+-- Ordem da query: FROM > WHERE > ORDER BY > LIMIT > OFFSET
+SELECT nome, preco, percentualDesconto*100 AS porcentagem
+FROM produto
+WHERE percentualDesconto >= 0.5
+ORDER BY preco DESC
+LIMIT 5;
