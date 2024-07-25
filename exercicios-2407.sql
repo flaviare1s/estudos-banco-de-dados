@@ -18,7 +18,7 @@ WHERE fkVendedor = 7;
 -- 4) Filtrar os vendedores com email (hotmail ou yahoo).
 SELECT *
 FROM vendedor
-WHERE email LIKE "%hotmail%" OR email LIKE "%yahoo%";
+WHERE email LIKE "%@hotmail%" OR email LIKE "%@yahoo%";
 
 -- 5) Filtrar os produtos do vendedor com ID = 1 e calcular o preço final do produto com desconto.
 SELECT
@@ -46,7 +46,7 @@ WHERE idVendedor = 1;
 
 SELECT *
 FROM vendedor
-WHERE YEAR(dataNascimento) > 2000;
+WHERE YEAR(dataNascimento) >= 2000;
 
 -- 9) Listar os vendedores que nasceram no mês atual (em que a consulta é feita). Tente utilizar MONTH (data) e CURDATE() para pegar a data atual.
 SELECT * 
@@ -65,7 +65,8 @@ LIMIT 5;
 SELECT 
 	nome,
     sobrenome,
-    dataNascimento AS aniversario
+    DATE_FORMAT(dataNascimento, "%d/%m") AS aniversario,
+    dataNascimento
 FROM vendedor
 WHERE YEAR(dataNascimento) BETWEEN 1993 AND 1995
 ORDER BY nome
@@ -86,7 +87,7 @@ LIMIT 100;
 -- Ordene pelo maior percentual de desconto.
 SELECT 
 	nome,
-    preco - (preco * percentualDesconto) AS precoFinal
+    ROUND(preco - (preco * percentualDesconto), 2) AS precoFinal
 FROM produto
 WHERE percentualDesconto > 0
 ORDER BY percentualDesconto DESC;
