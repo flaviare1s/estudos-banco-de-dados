@@ -96,7 +96,7 @@ ORDER BY percentualDesconto DESC;
 SELECT * FROM produto;
 
 UPDATE produto
-set validadeDesconto = "2025-01-01"
+SET validadeDesconto = "2025-01-01"
 WHERE idProduto IN (1, 2, 3);
 
 SELECT *
