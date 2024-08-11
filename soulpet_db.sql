@@ -25,3 +25,14 @@ INSERT INTO pets (`nome`, `tipo`, `porte`, `dataNasc`, `createdAt`, `updatedAt`,
 ('Luna', 'Gato', 'Pequeno', '2019-09-05', NOW(), NOW(), 4),
 ('Thor', 'Cachorro', 'Grande', '2016-02-29', NOW(), NOW(), 5);
 
+INSERT INTO pets (`nome`, `tipo`, `porte`, `dataNasc`, `createdAt`, `updatedAt`, `clienteId`) VALUES
+('Seila', 'bichodementira', 'Grande', '2016-02-29', NOW(), NOW(), 5);
+
+SELECT *
+FROM clientes C 
+	JOIN enderecos E 
+	ON C.id = E.clienteId;
+    
+SELECT * FROM pets;
+
+
